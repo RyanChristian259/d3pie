@@ -55,15 +55,13 @@ var tt = {
 
     showTooltip: function (pie, index) {
         var fadeInSpeed = pie.options.tooltips.styles.fadeInSpeed;
-        // tooltip fix for IE11
-        if (this.tt.currentTooltip !== index) {
-            this.hideTooltip(this.pie, this.tt.currentTooltip);
-            console.log(" message");
-        }
         if (tt.currentTooltip === index) {
             fadeInSpeed = 1;
         }
-
+        // tooltip fix for IE11, hides unused tooltip from view
+        if (this.tt.currentTooltip !== index) {
+            this.hideTooltip(this.pie, this.tt.currentTooltip);
+        }
         tt.currentTooltip = index;
         d3.select("#" + pie.cssPrefix + "tooltip" + index)
             .transition()
