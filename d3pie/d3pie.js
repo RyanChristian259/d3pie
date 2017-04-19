@@ -1808,15 +1808,14 @@ var tt = {
 	},
 
   showTooltip: function(pie, index) {
-     //IE11 Tooltip hangup fix
-    if (this.tt.currentTooltip !== index) {
-        this.hideTooltip(this.pie, this.tt.currentTooltip);
-    }
 	  var fadeInSpeed = pie.options.tooltips.styles.fadeInSpeed;
 	  if (tt.currentTooltip === index) {
 		  fadeInSpeed = 1;
 	  }
-
+    //IE11 Tooltip hangup fix
+    if (tt.currentTooltip !== index) {
+        this.hideTooltip(pie, tt.currentTooltip);
+    }
     tt.currentTooltip = index;
     d3.select("#" + pie.cssPrefix + "tooltip" + index)
       .transition()
