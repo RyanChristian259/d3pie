@@ -58,7 +58,10 @@ var tt = {
 	},
 
   showTooltip: function(pie, index) {
-
+     //IE11 Tooltip hangup fix
+    if (this.tt.currentTooltip !== index) {
+        this.hideTooltip(this.pie, this.tt.currentTooltip);
+    }
 	  var fadeInSpeed = pie.options.tooltips.styles.fadeInSpeed;
 	  if (tt.currentTooltip === index) {
 		  fadeInSpeed = 1;
